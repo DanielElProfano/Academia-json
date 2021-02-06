@@ -1,0 +1,34 @@
+   <h1>All professors</h1>
+   <table>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Modify</th>
+            <th>Delete</th>
+            <th>Show</th>
+        </tr>
+
+        {{#each allProfessors}}
+        <tr>
+            <td><img src="{{ photo }}" width="100px"></td>
+            <td>{{ name }}</td>
+            <td>{{ lastName }}</td>
+            <td>{{ mail }}</td>
+            <td>{{ age }}</td>
+            <td>{{#each subjects }}
+                {{name}}
+
+                {{/each}}
+            </td>
+         
+            <td><a href="/professor/{{this._id}}/modify"><img src="" width="15">modify</a></td>
+            <td><a href="/professor/{{this._id}}/delete"><img src="/images/bin-button.png" width="15">detele</a></td>
+            <td><a href="/professor/{{this._id}}/students"><img src="" width="15">Show students</a></td>
+        </tr>
+        {{/each}}
+
+    </table>

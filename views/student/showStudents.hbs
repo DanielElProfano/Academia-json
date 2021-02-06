@@ -1,0 +1,32 @@
+   <h1>All students</h1>
+   <table>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Modify</th>
+            <th>Delete</th>
+        </tr>
+
+        {{#each allStudents}}
+        <tr>
+            <td> <img src="{{ photo }}" width="100px"></td>
+            <td>{{ name }}</td>
+            <td>{{ lastName }}</td>
+            <td>{{ mail }}</td>
+            <td>{{ age }}</td>
+            <td>{{#each courses }}
+                {{name}}
+
+                {{/each}}
+            </td>
+           
+            <td><a href="/student/{{this._id}}/modify"><img src="/images/bin-button.png" width="15">modify</a></td>
+            <td><a href="/student/{{this._id}}/delete"><img src="/images/bin-button.png" width="15">detele</a></td>
+        </tr>
+        {{/each}}
+
+    </table>

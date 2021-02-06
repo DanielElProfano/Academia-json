@@ -1,0 +1,21 @@
+   <h1>Todas las asginaturas por curso</h1>
+   <table>
+        <tr>
+            <th>Name</th>
+            <th>Subjects</th>
+            <th>Delete</th>
+     
+        </tr>
+
+        {{#each courses}}
+        <tr>
+            <td>{{ name }}</td>
+            <td><a href="/subject/subjects?id={{this._id}}">Show subjects</a></td>
+            <td><a href="/course/{{this._id}}/delete"><img src="/images/bin-button.png" width="15">detele</a></td>
+           
+
+        </tr>
+        {{/each}}
+
+    </table>
+    

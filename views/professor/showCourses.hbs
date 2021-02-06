@@ -1,0 +1,56 @@
+        <h2>User: {{ professor.name }} {{ professor.lastName }} <a href="/login/logout">Log out</a></h2>
+        {{ professor._id }}
+        
+        <form action="/professor/{{ professor._id }}/allstudents" method="POST">
+      
+        <label>
+        <select name="id">
+            {{#each array }}
+                <option value="{{ _id }}">
+                   Course: {{ name }}, {{ _id }}
+                </option>
+            {{/each }}
+            </select> 
+            
+        </label>
+       <input type="submit" value="Select">
+    
+      
+    </form>
+    {{#if students}}
+      <h1>All Students of Course "{{ allStudents.0.courses.0.name }}" </h1>
+
+      <a href="/course/exam?id={{ allStudents.0.courses.0._id }}">CREATE dTEST</a>
+   <table>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>faltas</th>
+           
+        </tr>
+
+        {{#each allStudents}}
+        <tr>
+            <td><img src="{{ photo }}" width="100px"></td>
+            <td>{{ name }}</td>
+            <td>{{ lastName }}</td>
+            <td>{{ mail }}</td>
+            <td>{{ age }}</td>
+            <td>{{#each faltas }}
+                <ul>
+                  <li>{{ this }}</li>
+                </ul>
+                {{/each}}
+            </td>
+      
+            <td><a href="/student/{{ this._id }}/falta"><img src="" width="15">Falta</a></td>
+            <td><a href="/utils/{{ this._id }}/sms"><img src="" width="15">Send message</a></td>
+            <td><a href="/utils/{{ this._id }}/mailform?from={{ ../idProf }}&course={{ ../allStudents.0.courses.0._id  }}"><img src="/images/email-button.png" width="15">Send mail</a></td>
+        </tr>
+        {{/each}}
+ 
+    </table>
+    {{/if }}

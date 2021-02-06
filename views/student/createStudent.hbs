@@ -1,0 +1,61 @@
+
+<head>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div>
+        <a href="/login/check">Ir a Inicio</a>
+    </div>
+
+    <h1>
+        Crear nueva alumno
+    </h1>
+     <form action="/student/create" method="POST" enctype="multipart/form-data">
+      <label>
+            <span>Name: </span>
+            <input name="name" type="text">
+        </label>
+         <label>
+            <span>lastName</span>
+             <input name="lastName" type="text">
+        </label>
+          <label>
+            <span>Image</span>
+            <input name="photo" type="file" accept="image/png, image/jpg, image/jpeg">
+        </label>
+
+        <label>
+            <span>Mail</span>
+            <input name="mail" type="text" >
+        </label>
+         <label>
+            <span>Password</span>
+            <input name="password" type="password">
+        </label>
+
+        <label>
+            <span>Age</span>
+            <input name="age" type="text">
+        </label>
+
+         <label>
+            <span>Choose Course</span>
+            <select name="courses" multiple>
+                {{#each courses}}
+                <option value="{{ _id }}">
+                    {{ name }}
+                </option>
+               {{/each}}
+            </select>
+        </label> 
+       
+
+        <input type="submit" value="Create!">
+
+     
+    </form>
+   
+</body>
+
+</html>

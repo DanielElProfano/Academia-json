@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <title>Document</title>
+</head>
+
+<h2>Subject from course: {{ course.name }}</h2>
+ <table>
+        <tr>
+            <th>Name</th>
+            <th>Teachers</th>
+            <th>Delete</th>
+            <th>Add professor</th>
+        </tr>
+        
+        {{#each subjects}}
+        <tr>
+            <td>{{ name }}</td>
+           
+            <td>{{#each professors }}
+               {{ this.name }}|/|
+                {{/each }}
+            </td>
+            <td><a href="/subject/{{this._id}}/delete?id={{ course }}"><img src="/images/bin-button.png" width="15">detele</a></td>
+            <td><a href="/professor/choose?id={{ this._id }}&name={{ name }}">Choose</a></td>
+
+        </tr>
+     
+        {{/each}}
+          
+ 
+    </table>
+
+       
+    {{!-- {{#if hasProfessor}}
+        <h2> List of professors of {{ this.subjectName }}</h2>
+        {{#each professors}}
+            <h1>Name: {{ name }} Lastname: </h1>
+            <a href="/professor/addsubject?id={{ id }}&name={{ this.subjectName }}">add Subject</a> 
+        {{/each}}
+    {{else}}
+        <h3>There's any professor to {{ name }} </h3>
+    {{/if}} --}}
+        
+    
+</body>
+</html>

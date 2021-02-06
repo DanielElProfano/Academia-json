@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>ad subject to professor</title>
+</head>
+<body>
+  
+        <h2> List of professors of {{ subjectName }}</h2>
+        {{#each professors}}
+            <h1>Name: {{ this.name }} Lastname: </h1>
+            <a href="/professor/addsubject?idSub={{ this._doc.idSubject }}&name={{this._doc.subject }}&idProf={{ this._id }}">add Subject</a> 
+        {{/each}}
+
+    
+</body>
+</html>     
+     
+     
+ 

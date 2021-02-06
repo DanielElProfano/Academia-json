@@ -1,0 +1,24 @@
+ <form method="POST" action="/utils/mail/{{ course }}/{{ professor._id }}" >
+        <label>
+            <span>From: </span>
+            <input name="from" type="text" value="{{ professor.mail }}">
+        </label>
+        <label>
+            <span>To</span>
+            <input name="to" type="text" value="{{ student.mail }}">
+        </label>
+        
+        <label>
+            <span>Subject</span>
+            <input name="subject" type="text" value="Type your subject here">
+        </label>
+        <label>
+            <span>Text</span>
+            <textarea name="text" cols="50"></textarea>
+        </label>
+   
+
+        
+        <input type="submit" value="Send">
+</form> 
+        

@@ -1,0 +1,32 @@
+
+<head>
+      <title>{{title}}</title>
+</head>
+<body>
+    <h2>Create new Subject para el curso {{name}}</h2>
+        <form action="/subject/create?id={{id}}" method="POST">
+      
+        <label>
+        <select name="name" multiple>
+                <option value="React">
+                    React
+                </option>
+                <option value="Node">
+                    Node
+                </option>
+                <option value="Vanilla JS">
+                    Vanilla JS
+                </option>
+                 <option value="Angular">
+                    Angular
+                </option>
+            </select> 
+            
+        </label>
+       <input type="submit" value="Continue">
+       <a href="/subject/subjects?id={{id}}">Finalizar</span>
+      
+    </form>
+
+  </body>
+</html>

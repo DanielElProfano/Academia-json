@@ -1,0 +1,47 @@
+<head>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div>
+        <a href="/">Ir a Inicio</a>
+    </div>
+
+    <h1>
+       Modify {{ professor.name }}
+    </h1>
+    <img src="{{ professor.photo }}" width="200px">
+  
+     
+   <form action="/professor/{{ professor._id }}/modify" method="POST" enctype="multipart/form-data">
+    <label for="email">
+      <p>Name: </p>
+      <input type="text" name="name" value="{{ professor.name }}">
+    </label>
+     
+     
+         <label>
+            <span>lastName</span>
+             <input name="lastName" type="text" value="{{professor.lastName}}">
+        </label>
+        <label>
+            <span>Mail</span>
+            <input name="mail" type="text" value="{{ professor.mail }}">
+        </label>
+        <label>
+            <span>Age</span>
+            <input name="age" type="text" value="{{ professor.age }}">
+        </label>
+
+ 
+
+    <input type="submit" value="Login now!">
+       <a href="/professor/show">Cancel</a>
+   
+  </form>
+      
+     
+
+</body>
+
+</html>

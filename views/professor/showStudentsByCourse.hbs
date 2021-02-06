@@ -1,0 +1,31 @@
+ <h1>Todas los alumnos</h1>
+   <table>
+        <tr>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Falta</th>
+            <th>SMSmessage</th>
+            <th>Email</th>
+           
+        </tr>
+
+        {{#each allStudents}}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ lastName }}</td>
+            <td>{{ mail }}</td>
+            <td>{{ age }}</td>
+            <td>{{ courses.name }}</td>
+            
+            <img src="{{ photo }}" width="100px">
+            <td><a href="/student/{{this._id}}/falta"><img src="/images/bin-button.png" width="15">falta de asistencia</a></td>
+            <td><a href="/utils/{{this._id}}/modify"><img src="/images/email-button.png" width="15">SMS</a></td>
+            <td><a href="/utils/{{this._id}}/modify"><img src="/images/bin-button.png" width="15">send mail</a></td>
+           
+        </tr>
+        {{/each}}
+
+    </table>
