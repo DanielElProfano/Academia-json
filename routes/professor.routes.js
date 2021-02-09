@@ -15,10 +15,12 @@ router.get('/',  async(req, res, next) => {
 })
 
 router.post('/create', [auth.isAdmin, fileMiddleware.upload.single('photo'), fileMiddleware.uploadImage],async(req, res, next) => {
+    console.log()
     passport.authenticate('registerProfessor', (error, user) => {
         if(error){
             return res.status(403).json(error);
         }
+        delete user.password;
         return res.status(201).json(user);
     })(req, res, next);
 })
@@ -105,36 +107,28 @@ router.get('/:id/delete',[auth.isAdmin], async(req, res, next) => {
         }
     })
 
-router.get('/:id/students', async(req, res, next) => { //recibe el id del profesor
+router.get('/:id/courses', async(req, res, next) => { //recibe el id del profesor
     try{
         const array = [];
         const idProf = req.params.id;
-        const professor = await Professor.findById(idProf);
-        const students = false; //para no mostrar el campo de estudiantes
-        const allSubjects = await Subject.find({professors : idProf }).distinct('course').lean();
-        allSubjects.forEach(async element => {
-            const course = await Course.findById(element._id);
-            array.push(course)
-        })
-        return res.status(200).render('professor/showCourses', { array, professor, students });
+        const professor = await Professor.findById(idProf).populate('courses');
+        return res.status(200).json(professor);
     }catch(error){
         next(error);
     }
 })
 
 router.post('/:id/allstudents', async (req, res, next) => {    //muestra todos los alumnos de un curso
-    const idProf = req.params.id;                               //impartido por el profesr
-    const id = req.body.id;
-    const students = true;
-    const allStudents = await Student.find({ courses: id}).populate('courses');
-    return res.status(200).render('professor/showCourses', { allStudents, students, idProf })
+    const id = req.params.id;
+    const allStudents = await Student.find({ courses: id});
+    return res.json(allStudents);
 })
 
 router.get('/allstudents', async (req, res, next) => {
     const { id, idProf } = req.query;
     
     const students = true;
-    const allStudents = await Student.find({ courses: id}).populate('courses');
+    const allStudents = await Student.find({ courses: id});
     return res.status(200).render('professor/showCourses', { allStudents, students , idProf})
 })
 router.get('')

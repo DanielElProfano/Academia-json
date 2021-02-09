@@ -2,16 +2,17 @@ const isAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()){
         return next();
     }else{
-        return res.redirect('/login');
+        return res.status(403);
     }
 }
+
 
 const isAdmin = (req, res, next) => {
     if(req.user.rol === 'admin') {
         return next();
     } else {
         const error = new Error('No tiene permisos de Administrador')
-        return res.status(403).render('error', { error });
+        return res.status(403).json(error);
     }
 }
 const isProfessor = (req, res, next) => {
@@ -20,7 +21,7 @@ const isProfessor = (req, res, next) => {
         return next();
     } else {
         const error = new Error('No tiene permisos');
-        return res.status(403).render('error', { error });
+        return res.status(403).json(error)
     }
 }
 const isStudent = (req, res, next) => {
@@ -28,7 +29,7 @@ const isStudent = (req, res, next) => {
     if(rol === 'student' || rol === 'admin'){
         return next();
     } else {
-        return res.redirect('/');
+        return res.status(200);
     }
 }
 

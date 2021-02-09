@@ -34,7 +34,7 @@ passport.use(
         },
         async(req, mail, password, done) => {
             try {
-                const {name, lastName, photo, mail, education, age, password } = req.body;
+                const {name, lastName, education, age} = req.body;
                 let existUser = await Professor.findOne({ mail : mail});
                 if(existUser){
                     const error = new Error('Ya existe el usuario');

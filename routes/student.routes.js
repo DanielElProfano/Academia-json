@@ -18,7 +18,7 @@ router.post('/create',  [auth.isAdmin, fileMiddleware.upload.single('photo'),fil
         if(error){
             return res.render('error', {error, tittle: "Error"});
         }
-        return res.redirect("/student/show");
+        return res.json(user);
     })(req);
 })
 

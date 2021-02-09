@@ -65,7 +65,7 @@ router.get('/:id/delete', async(req, res, next) => {  //borra asignaturas de un 
             {_id : idCourse},
             {$pull: {subjects : ObjectID}},
             {new: true})
-        return res.redirect('/subject/subjects?id=' + idCourse);
+        return res.status(200);
     }catch(error){
         next(error);
     }

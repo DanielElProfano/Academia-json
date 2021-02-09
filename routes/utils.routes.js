@@ -9,21 +9,20 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken)
 
-router.get('/:id/mailform', async(req, res, next) => {
+router.get('/:idStd/:from/mailform', async(req, res, next) => {
     try{
-        const { from, course } = req.query;
-        const id = req.params.id;
-        const student = await Student.findById(id); 
+        // const { from, course } = req.query;
+        const { idStd, from } = req.params; 
+        const student = await Student.findById(idtd); 
         const professor = await Professor.findById(from);
         return res.status(200).render('professor/mailForm', { student, professor, course })
     }catch(error){
         next(error);
     }
 });
-router.post('/mail/:course/:id', async(req, res, next) => {
+router.post('/mail', async(req, res, next) => {
     const { from, to, subject, text } = req.body;
-    const id = req.params.course;
-    const idProf = req.params.id;
+    
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com ',
@@ -36,7 +35,7 @@ router.post('/mail/:course/:id', async(req, res, next) => {
     
     let mailOptions = {
         from: 'pruebesitasparanode@gmail.com',
-        to,
+        to: 'pruebesitasparanode@gmail.com',
         subject, 
         text
     };
@@ -48,7 +47,7 @@ router.post('/mail/:course/:id', async(req, res, next) => {
             console.log('Email sent: ' + info.response);
         }
     });
-    return res.redirect(`/professor/allstudents/?id=${ id }&idProf=${ idProf }`)
+    return res.status(200).json('Email sended');
 
 })
 router.get('/sms', async(req, res, next) => {
