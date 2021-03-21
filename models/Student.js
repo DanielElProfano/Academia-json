@@ -38,12 +38,10 @@ const studentSchema = new Schema(
         courses: [{
             type: mongoose.Types.ObjectId,
             ref: 'courses'
-
         }],
         faltas:{
             type: [Date],
         }
-        
     },
     { timestamps: true }
 

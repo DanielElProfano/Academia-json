@@ -11,7 +11,7 @@ mongoose.connect(DB_URL, {
     useUnifiedTopology: true,
   })
   .then ( ()=>{
-    console.log("conectado a DDBB")
+    console.log("conectado a DDBB: " + DB_URL )
     })
     .catch (()=>{
     console.log("Error conecying ti DB");

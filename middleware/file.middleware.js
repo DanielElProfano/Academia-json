@@ -30,17 +30,7 @@ const VALID_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg'];
           fieldSize: 500000000,
         },
       });
-    // const uploadImage = async(req, res, next) =>{
-    //   if(req.file){
-    //     const filePath = req.file.path;
-    //     const image = await cloudinary.uploader.upload(filePath);
-    //     await fs.unlinkSync(filePath);
-    //     req.file_url = image.secure_url;
-    //     return(next);
-    //   }else{
-    //     return(next);
-    //   }
-    // }
+
     const uploadImage = async(req, res, next) => {    
       if(req.file) {
         console.log(req.file);
