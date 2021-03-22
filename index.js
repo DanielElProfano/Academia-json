@@ -11,16 +11,19 @@ const server = express();
 var cors = require('cors');
 const passport = require('passport');
 require('./passport');
+
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Origin')
   next();
 });
 
 server.use(cors({
   origin: 'http://localhost:3000'}
 ));
+
 const path = require('path');
 
 server.use(passport.initialize());
@@ -37,7 +40,8 @@ server.use(
     resave: false,
     saveUninitialized: false, 
     cookie: {
-      maxAge: 3600000 
+      maxAge: 3600000,
+      sameSite: "none", // se añade a Heroku
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
