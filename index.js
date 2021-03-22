@@ -34,6 +34,8 @@ server.set('view engine', 'hbs');
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
+
+// server.set('trust proxy', true);  //habilita cookie de sesion desde heroku
 server.use(
   session({
     secret: process.env.SECRET_SESSION,
