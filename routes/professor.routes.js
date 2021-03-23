@@ -15,7 +15,6 @@ router.get('/',  async(req, res, next) => {
 })
 
 router.post('/create', [auth.isAdmin, fileMiddleware.upload.single('photo'), fileMiddleware.uploadImage],async(req, res, next) => {
-    console.log()
     passport.authenticate('registerProfessor', (error, user) => {
         if(error){
             return res.status(403).json(error);

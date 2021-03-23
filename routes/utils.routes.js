@@ -48,7 +48,6 @@ router.post('/mail', async(req, res, next) => {
         }
     });
     return res.status(200).json('Email sended');
-
 })
 router.get('/sms', async(req, res, next) => {
    

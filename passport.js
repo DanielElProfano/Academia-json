@@ -48,7 +48,6 @@ passport.use(
                 }
                 const image = req.file_url || null;
                 const hash = await bcrypt.hash(password, saltRounds);
-
                 const newProfessor = new Professor({
                             name,
                             lastName,
@@ -134,7 +133,7 @@ passport.use(
                     currentUser = await Student.findOne({ mail: mail });
                     
                     if(!currentUser){
-                        const error = new Error('El usuario no existe');
+                        const error = new Error('El usuario noa existe');
                         return done(error);
                     }
                 }

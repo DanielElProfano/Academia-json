@@ -19,16 +19,16 @@ router.post('/', async (req, res, next) =>{
     
     passport.authenticate('login', (error, user) => { 
         if(error) {
-            return res.status(403).json({message: 'user not found'})
+            return res.status(404).json({message: 'user not found'})
         }
         req.logIn(user, (error) => {
             if (error) {
               return res.json(error);
             }
             delete user.password;
-            return res.status(200).send(req.user)
+            return res.status(200).json(user)
       });
-    })(req, res, next);
+    })(req);
 });
 router.get('/checkSession', async(req, res, next) => {
     try{
