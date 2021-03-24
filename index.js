@@ -21,7 +21,7 @@ server.use((req, res, next) => {
 });
 
 server.use(cors({
-  origin: 'http://localhost:3000'}
+  origin: ['http://localhost:3000', 'https://ashacademy.netlify.app/']}
 ));
 
 const path = require('path');
