@@ -43,8 +43,8 @@ server.use(
     cookie: {
       maxAge: 3600000,
       httpOnly: false,
-      secure: false,
-      sameSite: false,
+      secure: true,
+      sameSite: none,
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
