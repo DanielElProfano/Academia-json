@@ -41,12 +41,13 @@ server.use(
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: false, 
+    secureProxy: true,
+    unset: 'destroy',
     cookie: {
       maxAge: 60 * 60 * 24 * 1000,
       secure: true,
-    httpOnly: true,
-    sameSite: 'none',
-
+      httpOnly: true,
+      sameSite: 'none',
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
