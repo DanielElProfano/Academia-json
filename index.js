@@ -41,7 +41,6 @@ server.use(
     resave: false,
     saveUninitialized: false, 
     cookie: {
-      secure: true,
       maxAge: 3600000,
       sameSite: "none", // se añade a Heroku
     },
