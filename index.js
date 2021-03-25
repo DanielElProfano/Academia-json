@@ -40,10 +40,11 @@ server.use(
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: false, 
-    credentials: true,
     cookie: {
       maxAge: 3600000,
-      sameSite: "none", // se añade a Heroku
+      httpOnly: false,
+      secure: false,
+      sameSite: false,
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
