@@ -6,6 +6,7 @@ const Subject = require('./models/Subject')
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+
 const PORT = process.env.PORT || 3000;
 const server = express();
 var cors = require('cors');
@@ -42,9 +43,7 @@ server.use(
     saveUninitialized: false, 
     cookie: {
       maxAge: 360000,
-      httpOnly: false,
-      secure: false,
-      sameSite: false,
+      sameSite: 'none',
 
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
