@@ -41,7 +41,7 @@ server.use(
     resave: false,
     saveUninitialized: false, 
     cookie: {
-      maxAge: 3600000,
+      maxAge: 36000000,
       httpOnly: false,
       secure: false,
       sameSite: false,
