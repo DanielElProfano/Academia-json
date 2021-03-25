@@ -16,7 +16,7 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Origin')
+ 
   next();
 });
 
@@ -35,7 +35,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 
-server.set('trust proxy', true);  //habilita cookie de sesion desde heroku
+// server.set('trust proxy', true);  //habilita cookie de sesion desde heroku
 server.use(
   session({
     secret: process.env.SECRET_SESSION,
