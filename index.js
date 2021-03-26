@@ -34,19 +34,18 @@ server.set('view engine', 'hbs');
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-
+server.enable('trust proxy');
 // server.set('trust proxy', true);  //habilita cookie de sesion desde heroku
 server.use(
   session({
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: false, 
-    secureProxy: true,
-    unset: 'destroy',
+    proxy: true,
     cookie: {
       maxAge: 60 * 60 * 24 * 1000,
       secure: true,
-      httpOnly: true,
+      httpOnly: false,
       sameSite: 'none',
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
